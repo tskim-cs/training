@@ -12,6 +12,14 @@ from tensorflow.contrib import cluster_resolver as contrib_cluster_resolver
 from tensorflow.contrib import data as contrib_data
 from tensorflow.contrib import tpu as contrib_tpu
 
+from tensorflow.compat.v1 import ConfigProto
+from tensorflow.compat.v1 import InteractiveSession
+
+__config = tf.ConfigProto()
+__config.gpu_options.per_process_gpu_memory_fraction = 5
+__config.gpu_options.allow_growth = False
+session = tf.InteractiveSession(config=__config)
+
 flags = tf.flags
 
 FLAGS = flags.FLAGS
